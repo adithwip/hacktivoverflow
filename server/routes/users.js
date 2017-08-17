@@ -1,9 +1,18 @@
 var express = require('express');
 var router = express.Router();
+var userCont = require('../controllers/userController');
+var authCont = require('../controllers/authController')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
+router.get('/', userCont.getAllUsers)
+
+// users can create post
+router.post('/', userCont.createNewUser)
+
+// only its user can update its content
+router.put('/:id', authCont.authUser, userCont.updateOne)
+
+// only its user can remove its content
+router.delete('/:id', authCont.authUser, userCont.removeOne)
 
 module.exports = router;

@@ -18,6 +18,7 @@ mongoose.connect('mongodb://adith:mongodb@cluster0-shard-00-00-ekozb.mongodb.net
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var threads = require('./routes/threads');
 
 var app = express();
 
@@ -35,7 +36,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/api/users', users);
+app.use('/api/threads', threads);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
