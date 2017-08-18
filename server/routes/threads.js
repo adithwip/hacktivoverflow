@@ -12,9 +12,12 @@ router.get('/:id/reply', responseCont.get)
 
 router.get('/:id/reply/:repid', responseCont.getOne)
 
-router.post('/', authCont.userInfo, threadCont.createThread)
+// router.post('/', authCont.userInfo, threadCont.createThread)
 
-router.post('/:id/reply', authCont.userInfo, responseCont.createThread)
+// for creating dummy data
+router.post('/', threadCont.createThread)
+
+router.post('/:id/reply', authCont.userInfo, responseCont.create)
 
 router.put('/:id', authCont.userInfo, threadCont.update)
 
